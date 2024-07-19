@@ -11,15 +11,14 @@ spring:
   main:
     banner-mode: off
   datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/books?serverTimezone=UTC
-    username: root
-    password: rootPassword
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/gestao_projetos
+    username: postgres
+    password: qwe123
   jpa:
     hibernate:
       ddl-auto: update
     show-sql: false
-    database: mysql
-    database-platform: org.hibernate.dialect.MySQL5Dialect
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
     open-in-view: false
     generate-ddl: false
