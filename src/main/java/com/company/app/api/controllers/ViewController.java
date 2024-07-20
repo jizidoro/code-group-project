@@ -14,11 +14,23 @@ public class ViewController {
 
     @GetMapping("/projetos")
     public String projetos() {
-        return "projetos";
+        return "projetos/view";
     }
 
     @GetMapping("/membros")
     public String membros() {
         return "membros";
     }
+
+    @GetMapping("/projetos/form")
+    public String projetosForm() {
+        return "projetos/form";
+    }
+
+    @GetMapping("/projetos/detalhes")
+    public String projetosDetalhes() {
+        return "projetos/detalhes";
+    }
 }
+
+
