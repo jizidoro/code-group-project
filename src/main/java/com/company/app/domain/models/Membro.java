@@ -1,7 +1,18 @@
-package com.company.app.dto;
+package com.company.app.domain.models;
 
-public class MembroDTO {
+import lombok.Data;
+
+import javax.persistence.*;
+
+@Entity
+@Table(name = "membros")
+@Data
+public class Membro {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String nome;
     private String atribuicao;
 

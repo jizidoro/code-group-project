@@ -1,6 +1,6 @@
-package com.company.app.repository;
+package com.company.app.persistence.repositories;
 
-import com.company.app.model.ProjetoMembro;
+import com.company.app.domain.models.ProjetoMembro;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

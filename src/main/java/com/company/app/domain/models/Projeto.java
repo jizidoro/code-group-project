@@ -1,16 +1,34 @@
-package com.company.app.dto;
+package com.company.app.domain.models;
 
-public class ProjetoDTO {
+import com.company.app.domain.models.enums.Risco;
+import com.company.app.domain.models.enums.Status;
+import lombok.Data;
+
+import javax.persistence.*;
+import java.util.Date;
+
+@Entity
+@Table(name = "projetos")
+@Data
+public class Projeto {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String nome;
-    private String dataInicio;
+    private Date dataInicio;
     private String gerenteResponsavel;
-    private String previsaoTermino;
-    private String dataRealTermino;
+    private Date previsaoTermino;
+    private Date dataRealTermino;
     private Double orcamentoTotal;
     private String descricao;
-    private String status;
-    private String risco;
+
+    @Enumerated(EnumType.STRING)
+    private Status status;
+
+    @Enumerated(EnumType.STRING)
+    private Risco risco;
 
     public Long getId() {
         return id;
@@ -28,11 +46,11 @@ public class ProjetoDTO {
         this.nome = nome;
     }
 
-    public String getDataInicio() {
+    public Date getDataInicio() {
         return dataInicio;
     }
 
-    public void setDataInicio(String dataInicio) {
+    public void setDataInicio(Date dataInicio) {
         this.dataInicio = dataInicio;
     }
 
@@ -44,19 +62,19 @@ public class ProjetoDTO {
         this.gerenteResponsavel = gerenteResponsavel;
     }
 
-    public String getPrevisaoTermino() {
+    public Date getPrevisaoTermino() {
         return previsaoTermino;
     }
 
-    public void setPrevisaoTermino(String previsaoTermino) {
+    public void setPrevisaoTermino(Date previsaoTermino) {
         this.previsaoTermino = previsaoTermino;
     }
 
-    public String getDataRealTermino() {
+    public Date getDataRealTermino() {
         return dataRealTermino;
     }
 
-    public void setDataRealTermino(String dataRealTermino) {
+    public void setDataRealTermino(Date dataRealTermino) {
         this.dataRealTermino = dataRealTermino;
     }
 
@@ -76,19 +94,19 @@ public class ProjetoDTO {
         this.descricao = descricao;
     }
 
-    public String getStatus() {
+    public Status getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(Status status) {
         this.status = status;
     }
 
-    public String getRisco() {
+    public Risco getRisco() {
         return risco;
     }
 
-    public void setRisco(String risco) {
+    public void setRisco(Risco risco) {
         this.risco = risco;
     }
 }

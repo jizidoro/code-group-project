@@ -1,4 +1,4 @@
-package com.company.app.dto;
+package com.company.app.application.dtos;
 
 public class ProjetoMembroDTO {
     private Long id;

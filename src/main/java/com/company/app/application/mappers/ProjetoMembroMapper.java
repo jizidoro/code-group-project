@@ -1,7 +1,7 @@
-package com.company.app.mappers;
+package com.company.app.application.mappers;
 
-import com.company.app.dto.ProjetoMembroDTO;
-import com.company.app.model.ProjetoMembro;
+import com.company.app.application.dtos.ProjetoMembroDTO;
+import com.company.app.domain.models.ProjetoMembro;
 import org.mapstruct.Mapper;
 
 @Mapper(componentModel = "spring")
