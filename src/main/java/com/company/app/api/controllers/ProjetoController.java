@@ -21,7 +21,7 @@ public class ProjetoController {
     @GetMapping("/get-all")
     public ResponseEntity<List<ProjetoDTO>> getAll(@RequestParam("query") Optional<String> query, @RequestParam("pageNumber") Optional<Integer> pageNumber, @RequestParam("pageSize") Optional<Integer> pageSize) {
         try {
-            List<ProjetoDTO> projetos;
+            List<ProjetoDTO> projetos = new ArrayList<>();
             if (query.isPresent() && !query.get().isEmpty()) {
                 projetos = projetoQuery.search(query.get()); // Implementar método search na interface IProjetoQuery
             } else {
@@ -51,7 +51,7 @@ public class ProjetoController {
     public ResponseEntity<List<ProjetoDTO>> getByNomeProjeto(@RequestParam String nome) {
         try {
             List<ProjetoDTO> projetos = new ArrayList<>();
-//            projetos = projetoQuery.findByNome(nome);
+            projetos = projetoQuery.findByNome(nome);
             return new ResponseEntity<>(projetos, HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);

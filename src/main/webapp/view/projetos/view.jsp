@@ -19,13 +19,10 @@
             <button class="btn btn-primary" type="button" id="searchButton">Buscar</button>
         </div>
     </div>
+    <div id="searchResults"></div>
 
     <!-- Botão Incluir Projeto -->
     <a href="${pageContext.request.contextPath}/projetos/form" class="btn btn-primary mb-3">Incluir Projeto</a>
-
-
-    <div id="searchResults"></div>
-
 
 </div>
 
@@ -33,9 +30,11 @@
 <script src="${pageContext.request.contextPath}/static/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 <script>
     $(document).ready(function() {
+        // Carregar todos os projetos ao carregar a página
+        carregarProjetos(1, 10);
+
         $('#searchButton').click(function() {
             var query = $('#searchInput').val();
-            console.log('Button clicked. Query:', query);
             if(query) {
                 buscarProjetos(query);
             } else {
@@ -46,7 +45,6 @@
         $('#searchInput').keypress(function(event) {
             if(event.which == 13) {
                 var query = $('#searchInput').val();
-                console.log('Enter pressed. Query:', query);
                 if(query) {
                     buscarProjetos(query);
                 } else {
@@ -55,8 +53,24 @@
             }
         });
 
+        function carregarProjetos(pageNumber, pageSize) {
+            $.ajax({
+                url: '${pageContext.request.contextPath}/api/v1/projeto/get-all',
+                type: 'GET',
+                data: {
+                    pageNumber: pageNumber,
+                    pageSize: pageSize
+                },
+                success: function(data) {
+                    atualizarTabela(data);
+                },
+                error: function(xhr, status, error) {
+                    $('#searchResults').html('<p>Erro ao carregar projetos.</p>');
+                }
+            });
+        }
+
         function buscarProjetos(query) {
-            console.log('Sending AJAX request to search projects.');
             $.ajax({
                 url: '${pageContext.request.contextPath}/api/v1/projeto/buscar',
                 type: 'GET',
@@ -64,11 +78,9 @@
                     nome: query
                 },
                 success: function(data) {
-                    console.log('AJAX request successful. Data:', data);
                     atualizarTabela(data);
                 },
                 error: function(xhr, status, error) {
-                    console.log('AJAX request failed. Status:', status, 'Error:', error);
                     $('#searchResults').html('<p>Erro ao buscar projetos.</p>');
                 }
             });
