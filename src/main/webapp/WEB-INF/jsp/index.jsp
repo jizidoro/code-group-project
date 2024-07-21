@@ -37,6 +37,14 @@
     </div>
 </nav>
 
+<div class="container">
+    <h1 class="mt-4">Bem-vindo à Gestão de Projetos</h1>
+    <div class="mt-4">
+        <a href="${pageContext.request.contextPath}/projetos" class="btn btn-primary">Projetos</a>
+        <a href="${pageContext.request.contextPath}/membros" class="btn btn-secondary">Membros</a>
+    </div>
+</div>
+
 
 <script src="<c:url value="/static/node_modules/bootstrap/dist/js/bootstrap.min.js"/>"></script>
 </html>
