@@ -7,10 +7,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/node_modules/bootstrap/dist/css/bootstrap.min.css">
     <title>Gestão de Projetos</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        .container {
+            flex: 1;
+        }
+        footer {
+            background-color: #f8f9fa;
+            padding: 10px 0;
+            text-align: center;
+            width: 100%;
+            bottom: 0;
+            position: absolute;
+        }
+    </style>
 </head>
 <body>
+<%@ include file="../includes/header.jsp" %>
+
 <div class="container mt-5">
-    <h1 class="mt-4">Gestão de Projetos</h1>
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h1 class="mt-4">Gestão de Projetos</h1>
+        <!-- Botão Incluir Projeto -->
+        <a href="${pageContext.request.contextPath}/projetos/form" class="btn btn-primary">Incluir Projeto</a>
+    </div>
 
     <!-- Nova Barra de Busca -->
     <div class="input-group mb-3">
@@ -20,17 +44,14 @@
         </div>
     </div>
     <div id="searchResults"></div>
-
-    <!-- Botão Incluir Projeto -->
-    <a href="${pageContext.request.contextPath}/projetos/form" class="btn btn-primary mb-3">Incluir Projeto</a>
-
 </div>
+
+<%@ include file="../includes/footer.jsp" %>
 
 <script src="${pageContext.request.contextPath}/static/node_modules/jquery/dist/jquery.min.js"></script>
 <script src="${pageContext.request.contextPath}/static/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 <script>
     $(document).ready(function() {
-        // Carregar todos os projetos ao carregar a página
         carregarProjetos(1, 10);
 
         $('#searchButton').click(function() {

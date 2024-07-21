@@ -9,42 +9,35 @@
 
     <title>Desafio Java</title>
 
-    <link href="<c:url value="/static/node_modules/bootstrap/dist/css/bootstrap.min.css"/>"
-          rel="stylesheet">
-
+    <link href="<c:url value='/static/node_modules/bootstrap/dist/css/bootstrap.min.css'/>" rel="stylesheet">
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        .container {
+            flex: 1;
+        }
+        .btn-custom {
+            margin-right: 10px;
+        }
+    </style>
 </head>
 <body>
-</body>
+<%@ include file="includes/header.jsp" %>
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="#">Navbar</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Home</a>
-                </li>
-
-            </ul>
-            <form class="d-flex">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success" type="submit">Search</button>
-            </form>
-        </div>
-    </div>
-</nav>
-
-<div class="container">
-    <h1 class="mt-4">Bem-vindo à Gestão de Projetos</h1>
-    <div class="mt-4">
-        <a href="${pageContext.request.contextPath}/projetos" class="btn btn-primary">Projetos</a>
-        <a href="${pageContext.request.contextPath}/membros" class="btn btn-secondary">Membros</a>
+<div class="container mt-5">
+    <h1 class="mb-4">Bem-vindo à Gestão de Projetos</h1>
+    <div class="mb-4">
+        <a href="${pageContext.request.contextPath}/projetos" class="btn btn-primary btn-custom">Projetos</a>
+        <a href="${pageContext.request.contextPath}/membros" class="btn btn-secondary btn-custom">Membros</a>
     </div>
 </div>
 
+<%@ include file="includes/footer.jsp" %>
 
-<script src="<c:url value="/static/node_modules/bootstrap/dist/js/bootstrap.min.js"/>"></script>
+<script src="<c:url value='/static/node_modules/jquery/dist/jquery.min.js'/>"></script>
+<script src="<c:url value='/static/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js'/>"></script>
+</body>
 </html>
