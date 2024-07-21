@@ -1,97 +1,34 @@
 package com.company.app.application.dtos;
 
-import lombok.Data;
+import com.company.app.domain.models.Pessoa;
+import com.company.app.domain.models.enums.Risco;
+import com.company.app.domain.models.enums.Status;
 
-@Data
-public class ProjetoDTO {
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+import java.io.Serial;
+import java.io.Serializable;
+import java.time.LocalDate;
+
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+public class ProjetoDTO implements Serializable {
+    @Serial
+    private static final long serialVersionUID = 1L;
+
     private Long id;
     private String nome;
-    private String dataInicio;
-    private String gerenteResponsavel;
-    private String previsaoTermino;
-    private String dataRealTermino;
-    private Double orcamentoTotal;
+    private LocalDate dataInicio;
+    private LocalDate previsaoFim;
+    private LocalDate dataFim;
     private String descricao;
-    private String status;
-    private String risco;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public String getDataInicio() {
-        return dataInicio;
-    }
-
-    public void setDataInicio(String dataInicio) {
-        this.dataInicio = dataInicio;
-    }
-
-    public String getGerenteResponsavel() {
-        return gerenteResponsavel;
-    }
-
-    public void setGerenteResponsavel(String gerenteResponsavel) {
-        this.gerenteResponsavel = gerenteResponsavel;
-    }
-
-    public String getPrevisaoTermino() {
-        return previsaoTermino;
-    }
-
-    public void setPrevisaoTermino(String previsaoTermino) {
-        this.previsaoTermino = previsaoTermino;
-    }
-
-    public String getDataRealTermino() {
-        return dataRealTermino;
-    }
-
-    public void setDataRealTermino(String dataRealTermino) {
-        this.dataRealTermino = dataRealTermino;
-    }
-
-    public Double getOrcamentoTotal() {
-        return orcamentoTotal;
-    }
-
-    public void setOrcamentoTotal(Double orcamentoTotal) {
-        this.orcamentoTotal = orcamentoTotal;
-    }
-
-    public String getDescricao() {
-        return descricao;
-    }
-
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
-    public String getRisco() {
-        return risco;
-    }
-
-    public void setRisco(String risco) {
-        this.risco = risco;
-    }
+    private Status status;
+    private Float orcamento;
+    private Risco risco;
+    private Pessoa gerente;
 }
