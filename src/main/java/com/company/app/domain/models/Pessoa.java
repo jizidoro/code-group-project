@@ -8,8 +8,6 @@ import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import java.io.Serial;
-import java.io.Serializable;
 import java.time.LocalDate;
 
 @Data
@@ -17,10 +15,7 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @Entity
 @Table(name = "tb_pessoa")
-public class Pessoa implements Serializable {
-    @Serial
-    private static final long serialVersionUID = 1L;
-
+public class Pessoa {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_pessoa")

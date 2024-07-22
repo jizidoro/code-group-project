@@ -7,4 +7,5 @@ import com.company.app.application.responseObjects.SingleResultDto;
 public interface IPessoaQuery {
     ListResultDto<PessoaDTO> findAll();
     SingleResultDto<PessoaDTO> findById(Long id);
+    ListResultDto<PessoaDTO> findByName(String nome);
 }

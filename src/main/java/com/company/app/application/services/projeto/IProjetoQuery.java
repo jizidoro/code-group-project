@@ -7,4 +7,5 @@ import com.company.app.application.responseObjects.SingleResultDto;
 public interface IProjetoQuery {
     ListResultDto<ProjetoDTO> findAll();
     SingleResultDto<ProjetoDTO> findById(Long id);
+    ListResultDto<ProjetoDTO> findByName(String nome);
 }

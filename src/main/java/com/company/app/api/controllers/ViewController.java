@@ -17,11 +17,6 @@ public class ViewController {
         return "projetos/view";
     }
 
-    @GetMapping("/membros")
-    public String membros() {
-        return "membros";
-    }
-
     @GetMapping("/projetos/form")
     public String projetosForm() {
         return "projetos/form";

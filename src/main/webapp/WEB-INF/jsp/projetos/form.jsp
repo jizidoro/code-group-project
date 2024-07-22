@@ -39,8 +39,8 @@
         <input type="date" class="form-control" id="dataInicio" name="dataInicio" required>
       </div>
       <div class="form-group mb-3">
-        <label for="gerenteResponsavel">Gerente Responsável</label>
-        <input type="text" class="form-control" id="gerenteResponsavel" name="gerenteResponsavel" required>
+        <label for="idGerenteResponsavel">ID do Gerente Responsável</label>
+        <input type="number" class="form-control" id="idGerenteResponsavel" name="idGerenteResponsavel" required>
       </div>
       <div class="form-group mb-3">
         <label for="previsaoTermino">Previsão de Término</label>
@@ -89,7 +89,7 @@
 
 <%@ include file="../includes/footer.jsp" %>
 
-<script src="${pageContext.request.contextPath}/static/node_modules/jquery/dist/jquery.slim.min.js"></script>
+<script src="${pageContext.request.contextPath}/static/node_modules/jquery/dist/jquery.min.js"></script>
 <script src="${pageContext.request.contextPath}/static/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 <script>
   $(document).ready(function() {
@@ -99,27 +99,49 @@
         event.stopPropagation();
         $(this).addClass('was-validated');
       } else {
-        var formData = $(this).serialize();
+        var riscoMap = {
+          'BAIXO': 'baixo risco',
+          'MEDIO': 'médio risco',
+          'ALTO': 'alto risco'
+        };
+
+        var statusMap = {
+          'EM_ANALISE': 'em análise',
+          'ANALISE_REALIZADA': 'análise realizada',
+          'ANALISE_APROVADA': 'análise aprovada',
+          'INICIADO': 'iniciado',
+          'PLANEJADO': 'planejado',
+          'EM_ANDAMENTO': 'em andamento',
+          'ENCERRADO': 'encerrado',
+          'CANCELADO': 'cancelado'
+        };
+
+        var formData = {
+          nome: $('#nome').val(),
+          dataInicio: $('#dataInicio').val(),
+          gerente: $('#idGerenteResponsavel').val(),
+          previsaoFim: $('#previsaoTermino').val(),
+          dataFim: $('#dataRealTermino').val(),
+          orcamento: $('#orcamentoTotal').val(),
+          descricao: $('#descricao').val(),
+          risco: riscoMap[$('#risco').val()],
+          status: statusMap[$('#status').val()]
+        };
+
         $.ajax({
           type: 'POST',
           url: '${pageContext.request.contextPath}/api/v1/projeto',
-          data: formData,
+          contentType: 'application/json',
+          data: JSON.stringify(formData),
           success: function(response) {
-            window.location.href = '${pageContext.request.contextPath}/projetos/view?success=true';
+            window.location.href = '${pageContext.request.contextPath}/projetos';
           },
           error: function() {
-            window.location.href = '${pageContext.request.contextPath}/projetos/view?success=false';
+            window.location.href = '${pageContext.request.contextPath}/projetos?success=false';
           }
         });
       }
     });
-
-    var urlParams = new URLSearchParams(window.location.search);
-    if (urlParams.has('success')) {
-      var success = urlParams.get('success') === 'true';
-      var alertDiv = $('<div>').addClass('alert').addClass(success ? 'alert-success' : 'alert-danger').text(success ? 'Projeto salvo com sucesso!' : 'Falha ao salvar o projeto.');
-      $('.container').prepend(alertDiv);
-    }
   });
 </script>
 </body>
