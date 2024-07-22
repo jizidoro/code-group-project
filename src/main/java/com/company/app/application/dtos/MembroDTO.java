@@ -1,25 +1,16 @@
 package com.company.app.application.dtos;
 
-import com.company.app.domain.models.Pessoa;
-import com.company.app.domain.models.Projeto;
-
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.io.Serial;
-import java.io.Serializable;
-
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class MembroDTO implements Serializable {
-    @Serial
-    private static final long serialVersionUID = 1L;
-
+public class MembroDTO {
     private Long id;
-    private Projeto projeto;
-    private Pessoa pessoa;
+    private Long projeto;
+    private Long pessoa;
 }

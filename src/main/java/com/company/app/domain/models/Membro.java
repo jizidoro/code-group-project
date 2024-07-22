@@ -5,28 +5,21 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.io.Serial;
-import java.io.Serializable;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
 @Table(name = "tb_membro")
-public class Membro implements Serializable {
-    @Serial
-    private static final long serialVersionUID = 1L;
-
+public class Membro {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_membro")
     private Long id;
 
-    @ManyToOne
-    @JoinColumn(name = "id_projeto")
-    private Projeto projeto;
+    @Column(name = "id_projeto")
+    private Long projeto;
 
-    @ManyToOne
-    @JoinColumn(name = "id_pessoa")
-    private Pessoa pessoa;
+    @Column(name = "id_pessoa")
+    private Long pessoa;
 }

@@ -12,19 +12,22 @@ import org.springframework.stereotype.Service;
 @Service
 @RequiredArgsConstructor
 public class ProjetoCommand implements IProjetoCommand {
-    private final ProjetoMapper mapper = ProjetoMapper.INSTANCE;
+    private final ProjetoMapper mapper;
     private final UseCaseFacade facade;
 
+    @Override
     public ProjetoDTO save(ProjetoDTO dto) {
         var result = mapper.toEntity(dto);
         return mapper.toDto(facade.execute(new UcProjetoCreate(result)));
     }
 
+    @Override
     public ProjetoDTO update(ProjetoDTO dto) {
         var result = mapper.toEntity(dto);
         return mapper.toDto(facade.execute(new UcProjetoEdit(result)));
     }
 
+    @Override
     public Void delete(Long id) {
         return facade.execute(new UcProjetoDelete(id));
     }

@@ -1,18 +1,12 @@
-# Fase de build usando Maven com JDK 17 em uma imagem baseada em Alpine
-FROM maven:3.8.1-openjdk-17-slim AS builder
+# Fase de build usando Maven com JDK 17
+FROM maven:3.8.1-openjdk-17 AS builder
 
-# Copie apenas o arquivo de configuração do Maven primeiro para tirar proveito do cache de dependências
-COPY pom.xml /usr/src/app/
+# Copie os arquivos de origem do projeto para o contêiner
+COPY . /usr/src/app
 WORKDIR /usr/src/app
 
-# Baixe as dependências do Maven (com cache)
-RUN mvn dependency:go-offline -B
-
-# Agora copie o restante dos arquivos do projeto
-COPY src /usr/src/app/src
-
 # Compile o projeto Maven
-RUN mvn clean install package -DskipTests --no-transfer-progress
+RUN mvn clean install package
 
 # Fase de execução usando Tomcat com JDK 17
 FROM tomcat:9.0.74-jdk17

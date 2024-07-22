@@ -12,19 +12,22 @@ import org.springframework.stereotype.Service;
 @Service
 @RequiredArgsConstructor
 public class MembroCommand implements IMembroCommand {
-    private final MembroMapper mapper = MembroMapper.INSTANCE;
+    private final MembroMapper mapper;
     private final UseCaseFacade facade;
 
+    @Override
     public MembroDTO save(MembroDTO dto) {
         var result = mapper.toEntity(dto);
         return mapper.toDto(facade.execute(new UcMembroCreate(result)));
     }
 
+    @Override
     public MembroDTO update(MembroDTO dto) {
         var result = mapper.toEntity(dto);
         return mapper.toDto(facade.execute(new UcMembroEdit(result)));
     }
 
+    @Override
     public Void delete(Long id) {
         return facade.execute(new UcMembroDelete(id));
     }

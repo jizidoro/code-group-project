@@ -1,0 +1,9 @@
+.input-group {
+    margin-bottom: 0; /* Remove o espaçamento inferior */
+}
+
+.form-control {
+    height: calc(1.5em + .75rem + 2px); /* Ajusta a altura do input */
+    padding: .375rem .75rem; /* Reduz o padding dentro do input */
+    font-size: 1rem; /* Ajusta o tamanho da fonte */
+}

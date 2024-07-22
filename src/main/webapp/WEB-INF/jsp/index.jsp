@@ -31,7 +31,6 @@
     <h1 class="mb-4">Bem-vindo à Gestão de Projetos</h1>
     <div class="mb-4">
         <a href="${pageContext.request.contextPath}/projetos" class="btn btn-primary btn-custom">Projetos</a>
-        <a href="${pageContext.request.contextPath}/membros" class="btn btn-secondary btn-custom">Membros</a>
     </div>
 </div>
 
