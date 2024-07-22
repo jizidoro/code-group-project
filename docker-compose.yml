@@ -16,6 +16,30 @@ services:
     networks:
       - app-network
 
+  sonarqube:
+    image: sonarqube:community
+    container_name: sonarqube
+    ports:
+      - '9000:9000'
+    environment:
+      - SONAR_ES_BOOTSTRAP_CHECKS_DISABLE=true
+    networks:
+      - app-network
+    depends_on:
+      - sonarqube-db
+
+  sonarqube-db:
+    image: postgres:12
+    container_name: sonarqube-db
+    environment:
+      POSTGRES_USER: sonar
+      POSTGRES_PASSWORD: sonar
+      POSTGRES_DB: sonar
+    networks:
+      - app-network
+    volumes:
+      - postgresql_data:/var/lib/postgresql/data
+
   app:
     build: .
     container_name: app
@@ -37,3 +61,8 @@ networks:
 
 volumes:
   pgdata:
+  postgresql_data:
+  sonarqube_data:
+  sonarqube_logs:
+  sonarqube_extensions:
+  sonarqube_bundled-plugins:
