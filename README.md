@@ -30,6 +30,11 @@ O sistema permite cadastrar e organizar cada projeto específico e permite assoc
 - PostgreSQL 14 (drive 42.2.23, Porta 5432)
 - SonarQube Community 10.6.0.92116 (Porta 9000)
 
+## Instalar e Executar com o Docker:
+docker-compose build 
+ou docker-compose build > $null para rodar sem o verbose no terminal
+docker-compose up
+
 ## Instalar e Executar:
 1. Para limpar e instalar a aplicação Maven use:
     ```bash
@@ -61,7 +66,6 @@ O sistema permite cadastrar e organizar cada projeto específico e permite assoc
 - Adicionar proteção contra ataques comuns, como SQL Injection e Cross-Site Scripting (XSS).
 - Configurar pipelines CI/CD (Integração Contínua/Entrega Contínua) para automação de testes e deploys.
 
-## Contribuir:
-Para qualquer problema, comentário ou feedback: 
-[here](https://github.com/egnaf/spring-web-jsp-example/issues).
+
+
 <br>
